@@ -188,28 +188,64 @@ plot(
 
 ### Ejercicio 9 (20%)
 Extraiga en un nuevo data frame los países de América del Sur con área de al menos 2.5 millones de km2 o población de al menos 40 millones de personas y genere un mapa de coropletas para cada variable (i.e. área y población), con sus títulos correspondientes.
-```{r}
+
+```{R}
+#se extraen paises de Suramerica
 paises_suramerica = world[world$continent == "South America"                            ,]
 
-paisesSAarea=paises_suramerica[paises_suramerica$area_km2 >= 2500000 ,]
+#data frame con filtro de area o población
 
+paises_saareaypop = paises_suramerica[ paises_suramerica$area_km2 >= 2500000  |   paises_suramerica$pop >= 40000000                ,]
+
+#plot de área
 plot(
-  paisesSAarea["area_km2"], 
+  paises_saareaypop["area_km2"], 
   main="
-  Países de América del Sur con área de 
-  al menos 2.5 millones de km2 "
-)
-
-paisesSApop=paises_suramerica[paises_suramerica$pop >= 40000000 ,]
-
-plot(
-  paisesSApop["pop"], 
-  main="
-  Países de América del Sur con población de 
+  
+  Área de países de América del Sur con área de 
+  al menos 2.5 millones de km2 o población de 
   al menos 40 millones de personas"
 )
 
+#plot de población
+plot(
+  paises_saareaypop["pop"], 
+  main="
+  
+  Población de países de América del Sur con población de 
+  al menos 40 millones de personas o área de 
+  al menos 2.5 millones de km2"
+)
+
+
 ```
+
+
+Dado que no se entiende claramente la pregunta, se realiza esta segunda posible respuesta al ejercicio 9
+```{r}
+
+
+#Data frame con filtro de área
+paisesSAarea=paises_suramerica[paises_suramerica$area_km2 >= 2500000 ,]
+#plot de área
+plot(
+  paisesSAarea["area_km2"], 
+  main="
+  Área de países de América del Sur con área de 
+  al menos 2.5 millones de km2 "
+)
+# data frame con filtro de población
+paisesSApop=paises_suramerica[paises_suramerica$pop >= 40000000 ,]
+#plot de población
+plot(
+  paisesSApop["pop"], 
+  main="
+  Población de países de América del Sur con población de 
+  al menos 40 millones de personas"
+)
+```
+
+
 
 
 
